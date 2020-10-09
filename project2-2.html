@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body class="m-4">
+    <div>
+        <div>Guess the Combo</div><br>
+        <div class="game"></div>
+        <div class="game-guess"></div>
+    </div><br>
+
+    <button type="button" class="btn btn-success">Start</button>
+    <br> <br> <div id="game-result" class="font-weight-bold text-success"></div>
+    <div id="guide" > 
+       <div class="font-weight-bold ml-2 mb-2 "> Guide :</div>
+       <div class="bg-success p-2">Green means correct number</div>
+       <div class="bg-danger  p-2">Red means lower number</div>
+       <div class="bg-primary p-2">Blue means higher number</div>
+    </div>
+</body>
+
+<script>
+    const button = document.querySelectorAll("button")[0];
+    const gamearea= document.querySelector(".game");
+    let bigin = "false";
+    let game_guess = 0;
+
+    button.addEventListener("click", function(){
+        if (bigin == "false"){
+            maker();
+            button.innerHTML = "Check";
+            bigin = true;
+        }else {
+            let numbers = document.querySelectorAll(".numb");
+            for (let i = 0; i < 6 ; i++) {
+                console.log(numbers[i].rand);
+                
+                // console.log(numbers[i].value);
+                if (numbers[i].value == numbers[i].rand){
+                    document.querySelectorAll("input")[i].style.background = "green";                    
+                }else if (numbers[i].value < numbers[i].rand){
+                    document.querySelectorAll("input")[i].style.background = "blue";  
+                }else {
+                    document.querySelectorAll("input")[i].style.background = "red";
+                }
+            }//end of loop for evaluate of numbers
+            game_guess ++;
+            if (numbers[1].value == numbers[1].rand && numbers[2].value == numbers[2].rand && numbers[3].value == numbers[3].rand && numbers[4].value == numbers[4].rand && numbers[5].value == numbers[5].rand) {
+                document.getElementById("game-result").innerHTML = " You win with " + game_guess + " guesses";
+                let guide = document.getElementById("guide");
+                guide.parentNode.removeChild(guide);
+            }
+            console.log(game_guess);
+        }
+    })
+
+    function maker() {
+        for (let  i= 0; i<6 ;i++) {
+            let el = document.createElement("input");
+            el.type = "Number";
+            el.max = "9";
+            el.min = "0";
+            el.classList.add = "numb";
+            el.value = 0;
+            el.rand = Math.floor (Math.random()*6);
+            el.classList = "numb";
+            // console.log(el.value);
+            gamearea.appendChild (el);            
+        }
+
+    }
+   
+</script>
+</html>
