@@ -1,0 +1,22 @@
+{
+  "name": "project-2",
+  "version": "1.0.0",
+  "description": "Guess numbers",
+  "main": "project2-2.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yasaman-Behnam-Malekzadeh/Project-2.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Yasaman-Behnam-Malekzadeh/Project-2/issues"
+  },
+  "homepage": "https://github.com/Yasaman-Behnam-Malekzadeh/Project-2#readme",
+  "dependencies": {
+    "bootstrap": "4.0.0"
+  }
+}
